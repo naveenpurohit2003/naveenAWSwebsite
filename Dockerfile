@@ -2,5 +2,5 @@ FROM centos:latest
 MAINTAINER Cloudsmart
 RUN yum -y install httpd
 COPY ./* /var/www/html/
-CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
+ENTRYPOINT ["/usr/sbin/httpd","-D","FOREGROUND"]
 EXPOSE 85
