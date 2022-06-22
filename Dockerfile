@@ -1,6 +1,5 @@
-FROM fedora
-RUN dnf update  -y 
-RUN dnf install httpd -y
-COPY ./* /var/www/html/
-ENTRYPOINT ["/usr/sbin/httpd","-D","FOREGROUND"]
+FROM httpd
+COPY images /usr/local/apache2/htdocs/images
+COPY styles /usr/local/apache2/htdocs/styles
+COPY * /usr/local/apache2/htdocs/
 EXPOSE 80

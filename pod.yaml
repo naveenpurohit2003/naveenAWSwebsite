@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: awswebsite
-    image: rsoftsysadmin/naveenaws
+    image: rsoftsysadmin/awswebsite
     ports:
      - containerPort: 80
   imagePullSecrets:

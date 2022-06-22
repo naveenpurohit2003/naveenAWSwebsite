@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - name: awswebsite
-        image: rsoftsysadmin/naveenaws
+        image: rsoftsysadmin/awswebsite
       imagePullSecrets:
          - name: regcred
+      
