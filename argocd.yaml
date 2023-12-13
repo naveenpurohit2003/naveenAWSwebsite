@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-website-app
+  namespace: default
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  project: default
+  source:
+    path: .
+    repoURL: 'https://github.com/naveenpurohit2003/naveenAWSwebsite.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences:
+    - group: apps/v1
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/metadata/creationTimestamp
+    - group: v1
+      kind: Pod
+      jsonPointers:
+        - /metadata/creationTimestamp
+  manifestSubstitutions:
+    - source:
+        kind: Secret
+        name: regcred
+      destination:
+        path: spec.template.spec.imagePullSecrets[0]
